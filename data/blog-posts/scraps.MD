@@ -126,6 +126,9 @@ Some questions worth discussing:
 
 ## Removed references
 
+- GDPR.eu overview.
+- GDPR.eu Article 17 explainer.
+- GDPR.eu Article 12 explainer.
 - The Age of Surveillance Capitalism, Shoshana Zuboff.
 - Electronic Frontier Foundation.
 - Mozilla Privacy Not Included.
