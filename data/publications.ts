@@ -4,7 +4,7 @@ export interface Publication {
   authors: string[];
   venue: string;
   year: number;
-  type: 'Conference' | 'Journal' | 'Workshop' | 'Preprint' | 'Book Chapter' | 'Invited Talk';
+  type: 'Conference' | 'Journal' | 'Workshop' | 'Preprint' | 'Book Chapter' | 'Invited Talk' | 'Presentation';
   doi?: string;
   url?: string;
   arxiv?: string;
@@ -85,7 +85,7 @@ export function parseBibtex(bibtexContent: string): Publication[] {
       'inproceedings': 'Conference',
       'incollection': 'Book Chapter',
       'misc': 'Preprint',
-      'presentation': 'Invited Talk'
+      'presentation': 'Presentation'
     };
     
     const declaredType = fields.match(/\btype\s*=\s*\{([^}]*)\}/i)?.[1];
@@ -95,11 +95,15 @@ export function parseBibtex(bibtexContent: string): Publication[] {
       'Workshop',
       'Preprint',
       'Book Chapter',
-      'Invited Talk'
+      'Invited Talk',
+      'Presentation'
     ]);
     entry.type = declaredType && validDeclaredTypes.has(declaredType as Publication['type'])
       ? declaredType as Publication['type']
       : typeMap[entryType.toLowerCase()] || 'Conference';
+    if (entryType.toLowerCase() === 'presentation') {
+      entry.invited = true;
+    }
     
     if (entry.title && entry.authors && entry.venue && entry.year) {
       entries.push(entry as Publication);

@@ -38,6 +38,9 @@ while ((match = entryPattern.exec(bibContent)) !== null) {
   // Parse fields
   const fields = parseFields(fieldsContent);
   entry.type = getPublicationType(entryType.toLowerCase(), fields.type);
+  if (entryType.toLowerCase() === 'presentation') {
+    entry.invited = true;
+  }
   
   // Extract required fields
   entry.title = fields.title || 'Unknown Title';
@@ -268,7 +271,8 @@ function getPublicationType(bibtexType, declaredType) {
     'Workshop',
     'Preprint',
     'Book Chapter',
-    'Invited Talk'
+    'Invited Talk',
+    'Presentation'
   ]);
 
   if (validDeclaredTypes.has(declaredType)) {
@@ -280,7 +284,7 @@ function getPublicationType(bibtexType, declaredType) {
     'inproceedings': 'Conference',
     'incollection': 'Book Chapter',
     'inbook': 'Book Chapter',
-    'presentation': 'Invited Talk',
+    'presentation': 'Presentation',
     'misc': 'Preprint',
     'techreport': 'Preprint',
     'phdthesis': 'Book Chapter',
