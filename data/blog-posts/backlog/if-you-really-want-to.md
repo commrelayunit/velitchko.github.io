@@ -1,7 +1,7 @@
 ---
 title: "If You Really, Really, Really Want to Do This"
 subtitle: "A practical privacy pack for auditing your digital footprint and reducing dependencies"
-date: "2026-08-30"
+date: "2026-09-09"
 author: "Velitchko Filipov"
 hashtags:
   - privacy
@@ -217,54 +217,26 @@ A small guiding principle:
 
 ## From the Audit to Actually Deleting Things
 
-Once the audit produces a list of accounts, the question is no longer abstract. Keep, secure, migrate, reduce permissions, or delete. The easy cases have a visible **Delete account** button. For those, use it. [JustDeleteMe](https://justdeleteme.xyz/) is useful for finding the links companies bury in settings; [YourDigitalRights.org](https://yourdigitalrights.org/) is a good starting point when the self-service route does not exist or does not work.<sup>[12](#note-12)</sup><sup>[13](#note-13)</sup>
+Once the audit produces a list of accounts, the next step is to just start. You get to decide: do you keep, secure, migrate, reduce, or delete permissions? Sometimes it is easy to delete an account or a service, as there is a visible **Delete account** button somewhere under account settings. You can check this service out which is useful to find those *easy* to delete services [JustDeleteMe](https://justdeleteme.xyz/)<sup>[12](#note-12)</sup> (useful for finding the links companies bury in settings). Another neat service is provided by [YourDigitalRights.org](https://yourdigitalrights.org/) with good support for when that **Delete account** button isn't there (or doesn't work)<sup>[13](#note-13)</sup>
 
-For EU-based requests, this is the flow I would use. It is a practical workflow, not legal advice.
+For EU citizens (yes, we have the GDPR), this is the flow I would use.
 
-1. **Export what you want to keep and confirm how you will still log in.** Do this before deleting an account or revoking an OAuth connection.
-2. **Use the normal deletion route if it exists.** Save a confirmation or screenshot in the audit record.
-3. **Find the controller's privacy contact.** Check the privacy policy for a privacy team, DPO, EU representative, or data-subject-rights address.
-4. **Send a narrow, documented request.** Identify the account/identifier, say what you want erased, and ask for confirmation. Article 17 is the usual erasure route, subject to its conditions and exceptions.<sup>[14](#note-14)</sup>
-5. **Keep a small case file.** Record the date, addresses contacted, ticket number, identity checks requested, response, and any retention explanation.
-6. **Track the deadline and escalate deliberately.** Article 12 generally requires a response within one month; a controller can extend this by up to two further months for complex requests, but should tell you within the first month and explain why.<sup>[15](#note-15)</sup> If support loops, ask for the privacy team or DPO. If the response remains inadequate, the relevant supervisory authority is the next step.
+1. **Export your data if you want to keep it and confirm how you will still log in.** Do this before deleting an account or revoking an OAuth connection.
+2. **If possible follow the reommended deletion route (FAq).** Save a confirmation or screenshot in the audit record.
+3. **If that fails, find the DPO's contact or a privacy@servicel.com email.** Check the privacy policy for a privacy team, DPO, EU representative, or data-subject-rights address.
+4. **Send a narrow, documented request.** State what you want erased, and ask for confirmation. Article 17 is the usual erasure route, subject to its conditions and exceptions.<sup>[14](#note-14)</sup>
+5. **Update your table with a status.** Record the date, addresses contacted, ticket number, response, and any retention explanation.
+6. **Track the deadline and escalate deliberately.** Article 12 generally requires a response within one month; a controller can extend this by up to two further months for complex requests, but **should tell you within the first month and explain why**.<sup>[15](#note-15)</sup> If support loops, ask for the privacy team or DPO. If the response remains inadequate, the relevant supervisory authority is the next step.
 
-The GDPR itself was rarely the difficult part for me. The organizational machinery around it was. Some companies deleted everything within hours. Others took weeks to acknowledge a request, sent me back to broken forms, or required access to an account whose login system no longer worked. One request involved more than thirty emails.
+The GDPR itself is not the difficult part, from my experience the organizational and bureaucratic processes around it are major pain points. Some companies deleted everything within hours, whereas others took weeks to acknowledge a request, sent me back to broken forms, or required access to an account whose login system no longer worked.
 
-<mark>Creating accounts takes seconds. Leaving them often exposes the parts of an organization nobody designed properly.</mark>
-
-This is not proof that every retained record is non-compliance. Some data has to be kept for legal, tax, fraud, or contractual reasons. What I want in those cases is a clear explanation of **what** remains, **why**, and **for how long**. That is why the inventory matters: it turns a frustrating pile of email into a set of cases with dates, evidence, and an obvious next action.
-
-I also use LLMs here, but only for the administrative drudgery: drafting a concise follow-up, translating a request, or summarizing a long support thread. I still decide what to ask for and read every message before it goes out.
-
----
-
-## The Order I Would Follow If I Started Again
-
-If I had to compress the entire process into one sequence, it would look something like this:
-
-1. **Back up first.** Export anything you might regret losing before changing accounts or identity providers.
-2. **Secure your primary identities.** Email, password manager, MFA, recovery methods, and unique passwords come before cleanup.
-3. **Collect your identifiers.** Current and historical emails, usernames, phone numbers, and aliases.
-4. **Run the footprint audit.** Sherlock, breach history, mailbox analysis, password-manager/browser domains, OAuth connections, and manual memory.
-5. **Build the inventory.** One row per service with evidence, access, sensitivity, dependency, and status.
-6. **Fix security problems before deletion.** Reused passwords and breached credentials take priority.
-7. **Delete low-value dormant accounts.** These are usually the easiest wins.
-8. **Work through inaccessible accounts.** Recovery, support, privacy contacts, DPOs, and formal erasure requests where applicable.
-9. **Audit the large ecosystems.** Reduce unnecessary Meta, Microsoft, Amazon, Google, and Apple dependencies.
-10. **Replace defaults deliberately.** Browser, search, messaging, maps, notes, cloud storage, and other daily tools.
-11. **Move to more controllable operating systems if it makes sense for you.**
-12. **Self-host selectively and only after you understand the operational cost.**
-13. **Repeat the audit.** This is maintenance, not a one-time purification ritual.
-
-That final point is important. You will create new accounts. New tools will appear. Companies will be acquired. Privacy policies will change. You will make compromises because a service is useful enough to justify them.
-
-The goal is not to reach a mythical state where no company has any information about you. The goal is to stop accumulating those relationships unconsciously.
+It is important to realize that some data has to be kept for legal, tax, fraud, or contractual reasons and when making a request you can ask for the **exact** reasons that certain data needs to be kept on file. You have the right to I ask for clear explanation of **what** remains, **why**, and **for how long**. I can also recommend to use LLMs here. They are great to tackly the annoying part of drafting formal emails, requesting deletion, and referring to parts of the privacy policy and GDPR that apply. Very useful for drafting a concise follow-up, translating a request, or summarizing a long support thread. 
 
 ---
 
 ## Things I Would *Not* Do
 
-I would not delete accounts before exporting the data I want to keep. I would not revoke an OAuth provider before establishing another login method. I would not upload mailbox archives or password exports to an online "audit" service. I would not switch every tool at once and then spend two weeks unable to work because my calendar, contacts, maps, notes, and passwords all changed together.
+I would not delete accounts before exporting the data I want to keep. I would not revoke an OAuth provider before establishing an alternative login method. I would not upload mailbox archives, credentials, personal information to online "audit" services. I would not switch every tool at once and then spend two weeks unable to work because my calendar, contacts, maps, notes, and passwords all changed together.
 
 I also would not try to eliminate every indirect Big Tech dependency. Discovering that a privacy-respecting service happens to use AWS does not automatically make migrating away from it worthwhile. There is an enormous difference between Amazon operating the infrastructure underneath a service and Amazon directly owning your identity, purchase history, voice recordings, photos, and behavioral profile.
 
@@ -272,15 +244,25 @@ Focus on the relationships where your decisions actually change something.
 
 ## The Goal Is Optionality
 
-After going through this for a while, I think optionality is a better measure of digital sovereignty than purity.
+After going through this for a while and reflecting on my process and experience, I think optionality is a better measure of digital sovereignty than purity.
 
-Can I leave this service without losing years of data? Can I export in a useful format? Can I authenticate without one company being the gatekeeper for everything else? Can I replace the application without rebuilding my entire workflow? Can I understand what my operating system is doing? Can I delete an account without thirty-seven emails? Can I choose convenience today without making that choice irreversible tomorrow?
+Can I leave this service without losing years of data?
 
-Those questions are much more useful to me than asking whether a product is simply "private" or "not private."
+Can I export in a useful format?
 
-This part was the practical consequence of the first two: **build the map, secure the foundations, reduce the dependencies that no longer make sense, and keep an exit path open for the ones you choose to keep.**
+Can I authenticate without one company being the gatekeeper for everything else?
 
-This probably isn't a perfect stack but it is the one I use. The intent of the process I followed was to make the defaults a little less default. If you have suggestions, let me know!
+Can I replace the application without rebuilding my entire workflow?
+
+Can I understand what my operating system is doing?
+
+Can I delete an account without thirty-seven emails?
+
+Can I choose convenience today without making that choice irreversible tomorrow?
+
+This wraps up the practical part from the first two posts: **build the map, secure the foundations, reduce the dependencies that no longer make sense, and keep an exit path open for the ones you choose to keep.**
+
+I know this isnt a perfect stack but it is the one I use. The intent of the process I followed was to make the defaults a little less default. If you have suggestions, let me know!
 
 ---
 
