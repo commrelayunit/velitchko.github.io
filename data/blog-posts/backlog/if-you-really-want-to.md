@@ -23,7 +23,7 @@ featured: false
 ![Privacy Pack](/blog/privacypack.png)
 
 
-In the [previous post](https://velitchko.github.io/blog/rabbit-hole-2026), I wrote about my curiousity that pushed me down this rabbit hole: from my operating system to the applications running in the background, and the uncomfortable realization that much of the technology I used every day ran on defaults I had never consciously chosen.<sup>[1](#note-1)</sup>
+In the [previous post](https://velitchko.github.io/blog/rabbit-hole-2026), I wrote about the curiosity that pushed me down this rabbit hole: from my operating system to the applications running in the background, and the uncomfortable realization that much of the technology I used every day ran on defaults I had never consciously chosen.<sup>[1](#note-1)</sup>
 
 If somebody reads the first two pieces and thinks, *"Okay, fine. I really, really, really want to do this. Where do I actually start?"*, this is roughly the answer I would give them.
 
@@ -31,7 +31,7 @@ The temptation is to begin with the fun part. Install Linux. Flash GrapheneOS. R
 
 I would not start there. The reality is, before changing the things you know about, you need to find out the parts that you don't know about.
 
-So, I would begin with an audit. Don't think about removing, migrating, or deleting anything yet. Start off with building a map of the digital footprint you already have. There will be many services you forgot existed at all. 
+So, I would begin with an audit. Don't think about removing, migrating, or deleting anything yet. Start by building a map of the digital footprint you already have. There will be many services you forgot existed at all.
 
 So start off by asking:
 
@@ -59,9 +59,9 @@ Most of us do not have an accurate and up-to-date list of our online accounts. W
 
 That is where I would start.
 
-Before deleting anything, collect the identifiers you have used over the years: current and old email addresses, usernames, aliases, phone numbers, and any recurring handles. Then use multiple sources to reconstruct the account history. No single technique finds everything and most propose non-existant candidates, but if they overlap this becomes surprisingly informative.
+Before deleting anything, collect the identifiers you have used over the years: current and old email addresses, usernames, aliases, phone numbers, and any recurring handles. Then use multiple sources to reconstruct the account history. No single technique finds everything and most propose non-existent candidates, but if they overlap this becomes surprisingly informative.
 
-This [repository](https://github.com/commrelayunit/digital-footprint-audit) is what I used to analyze my email inbox and some scripts to check your exposure using OSINT tools. The idea is to combine imperfect signals into one local audit that helps you narrow down and identify which services you are signed up for and how exposed your digital footprint actually is.
+This [repository](https://github.com/commrelayunit/digital-footprint-audit) is what I used to analyze my email inbox, alongside some scripts to check my exposure using OSINT tools. The idea is to combine imperfect signals into one local audit that helps you narrow down and identify which services you are signed up for and how exposed your digital footprint actually is.
 
 ### The signals I currently use
 
@@ -101,7 +101,7 @@ The same applies even more strongly to browser password exports. Firefox allows 
 
 > **Do not upload a browser password CSV to an online tool. Do not email it to yourself. Do not leave it sitting in Downloads for six months.**
 
-You should use the analyzer to extract the service and domain information locally, produce the report, and then destroy the CSV immediately. The passwords themselves are not interesting for the audit; the fact that an account existed is.
+Use the analyzer to extract service and domain information locally, produce the report, and then destroy the CSV immediately. The passwords themselves are not interesting for the audit; the fact that an account existed is.
 
 ---
 
@@ -141,7 +141,7 @@ So to make it more useful the audit needs a bit of structure. For each service I
 
 Once that exists, the exercise becomes to sort by risk, importance, and effort to systematically prune your digital exposure. Randomly deleting whatever account happens to annoy you that afternoon is also a strategy that tends to work. If you do it consistently at some point you will get through the list!
 
-My own priority order is roughly: secure the important accounts: 1) delete obvious junk; 2) investigate accounts I cannot access; and 3) only then start migrating services that I actively use.
+My own priority order is roughly: secure the important accounts first; delete obvious junk; investigate accounts I cannot access; and only then start migrating services that I actively use.
 
 That might sound backwards for a post about reducing your footprint, but there is little point deleting twenty abandoned forum accounts without having your primary email secured with proper MFA.
 
@@ -153,9 +153,9 @@ I have started referring to one part of this as **de-MAGA**: reducing dependence
 
 You cannot really purge every trace of these companies from existence. Amazon alone sits underneath an enormous amount of web infrastructure through AWS; trying to avoid every indirect dependency is to a given extent impossible.
 
-However, looking at your **direct relationships** with these services is much more useful. Check out what your exposure is: accounts, identity, storage, communication, operating systems, purchases, behavioral history,and where these companies are the primary party holding your information.
+However, looking at your **direct relationships** with these services is much more useful. Check what your exposure is: accounts, identity, storage, communication, operating systems, purchases, behavioral history, and where these companies are the primary party holding your information.
 
-For me, Google is a good example to illustrate this. My Google account had accumulated years of email, authentication relationships, app activity, search behavior, YouTube history, location-related data, and device information. I did not need to delete Google overnight, its actually still ongoing. But, the first move I did was transfering my emails, authentication, and photos and drive contents away from Google. Then I replaced the browser and search engine defaults. I turned off any kind of history and tracking, and over time this gradually turned Google from *the one service* into *one of the services*.
+For me, Google is a good example to illustrate this. My Google account had accumulated years of email, authentication relationships, app activity, search behavior, YouTube history, location-related data, and device information. I did not need to delete Google overnight; it is actually still ongoing. But the first move I made was transferring my email, authentication, photos, and Drive contents away from Google. Then I replaced the browser and search engine defaults. I turned off any kind of history and tracking, and over time this gradually turned Google from *the one service* into *one of the services*.
 
 ---
 
@@ -195,7 +195,7 @@ This is my list of **starting points**. Things may change, projects get acquired
 
 ## Self-Hosting Comes Later
 
-Self-hosting is one of the most satisfying parts of this journey because it makes ownership tangible. 
+Self-hosting is one of the most satisfying parts of this journey because it makes ownership tangible.
 
 <mark>Your files are on your hardware</mark>.
 
@@ -207,7 +207,7 @@ When you self-host something, you are not removing responsibility; you are movin
 
 That is why I would **not** begin this journey by self-hosting email, moving every password into a server you configured yesterday, or exposing twenty Docker containers directly to the internet.
 
-Start small, setup a media server, local DNS blocker, test SearXNG instance, or another replaceable service. Add proper backups. Learn how updates work. Learn what you are exposing to the network. Then you can move on to more.
+Start small: set up a media server, local DNS blocker, test SearXNG instance, or another replaceable service. Add proper backups. Learn how updates work. Learn what you are exposing to the network. Then you can move on to more.
 
 A small guiding principle:
 
@@ -217,20 +217,24 @@ A small guiding principle:
 
 ## From the Audit to Actually Deleting Things
 
-Once the audit produces a list of accounts, the next step is to just start. You get to decide: do you keep, secure, migrate, reduce, or delete permissions? Sometimes it is easy to delete an account or a service, as there is a visible **Delete account** button somewhere under account settings. You can check this service out which is useful to find those *easy* to delete services [JustDeleteMe](https://justdeleteme.xyz/)<sup>[12](#note-12)</sup> (useful for finding the links companies bury in settings). Another neat service is provided by [YourDigitalRights.org](https://yourdigitalrights.org/) with good support for when that **Delete account** button isn't there (or doesn't work)<sup>[13](#note-13)</sup>
+Once the audit produces a list of accounts, the question is no longer abstract. Keep, secure, migrate, reduce permissions, or delete. The easy cases have a visible **Delete account** button. For those, use it. [JustDeleteMe](https://justdeleteme.xyz/) is useful for finding the links companies bury in settings; [YourDigitalRights.org](https://yourdigitalrights.org/) is a good starting point when the self-service route does not exist or does not work.<sup>[12](#note-12)</sup><sup>[13](#note-13)</sup>
 
-For EU citizens (yes, we have the GDPR), this is the flow I would use.
+For EU-based requests, this is the flow I would use. It is a practical workflow, not legal advice.
 
-1. **Export your data if you want to keep it and confirm how you will still log in.** Do this before deleting an account or revoking an OAuth connection.
-2. **If possible follow the reommended deletion route (FAq).** Save a confirmation or screenshot in the audit record.
-3. **If that fails, find the DPO's contact or a privacy@servicel.com email.** Check the privacy policy for a privacy team, DPO, EU representative, or data-subject-rights address.
-4. **Send a narrow, documented request.** State what you want erased, and ask for confirmation. Article 17 is the usual erasure route, subject to its conditions and exceptions.<sup>[14](#note-14)</sup>
-5. **Update your table with a status.** Record the date, addresses contacted, ticket number, response, and any retention explanation.
-6. **Track the deadline and escalate deliberately.** Article 12 generally requires a response within one month; a controller can extend this by up to two further months for complex requests, but **should tell you within the first month and explain why**.<sup>[15](#note-15)</sup> If support loops, ask for the privacy team or DPO. If the response remains inadequate, the relevant supervisory authority is the next step.
+1. **Export what you want to keep and confirm how you will still log in.** Do this before deleting an account or revoking an OAuth connection.
+2. **Use the normal deletion route if it exists.** Save a confirmation or screenshot in the audit record.
+3. **Find the controller's privacy contact.** Check the privacy policy for a privacy team, DPO, EU representative, or data-subject-rights address.
+4. **Send a narrow, documented request.** Identify the account or identifier, say what you want erased, and ask for confirmation. Article 17 is the usual erasure route, subject to its conditions and exceptions.<sup>[14](#note-14)</sup>
+5. **Keep a small case file.** Record the date, addresses contacted, ticket number, identity checks requested, response, and any retention explanation.
+6. **Track the deadline and escalate deliberately.** Article 12 generally requires a response within one month; a controller can extend this by up to two further months for complex requests, but should tell you within the first month and explain why.<sup>[15](#note-15)</sup> If support loops, ask for the privacy team or DPO. If the response remains inadequate, the relevant supervisory authority is the next step.
 
-The GDPR itself is not the difficult part, from my experience the organizational and bureaucratic processes around it are major pain points. Some companies deleted everything within hours, whereas others took weeks to acknowledge a request, sent me back to broken forms, or required access to an account whose login system no longer worked.
+The GDPR itself was rarely the difficult part for me. The organizational machinery around it was. Some companies deleted everything within hours. Others took weeks to acknowledge a request, sent me back to broken forms, or required access to an account whose login system no longer worked. One request involved more than thirty emails.
 
-It is important to realize that some data has to be kept for legal, tax, fraud, or contractual reasons and when making a request you can ask for the **exact** reasons that certain data needs to be kept on file. You have the right to I ask for clear explanation of **what** remains, **why**, and **for how long**. I can also recommend to use LLMs here. They are great to tackly the annoying part of drafting formal emails, requesting deletion, and referring to parts of the privacy policy and GDPR that apply. Very useful for drafting a concise follow-up, translating a request, or summarizing a long support thread. 
+<mark>Creating accounts takes seconds. Leaving them often exposes the parts of an organization nobody designed properly.</mark>
+
+This is not proof that every retained record is non-compliance. Some data has to be kept for legal, tax, fraud, or contractual reasons. What I want in those cases is a clear explanation of **what** remains, **why**, and **for how long**. That is why the inventory matters: it turns a frustrating pile of email into a set of cases with dates, evidence, and an obvious next action.
+
+I also use LLMs here, but only for the administrative drudgery: drafting a concise follow-up, translating a request, or summarizing a long support thread. I still decide what to ask for and read every message before it goes out.
 
 ---
 
@@ -262,7 +266,7 @@ Can I choose convenience today without making that choice irreversible tomorrow?
 
 This wraps up the practical part from the first two posts: **build the map, secure the foundations, reduce the dependencies that no longer make sense, and keep an exit path open for the ones you choose to keep.**
 
-I know this isnt a perfect stack but it is the one I use. The intent of the process I followed was to make the defaults a little less default. If you have suggestions, let me know!
+I know this isn't a perfect stack, but it is the one I use. The intent of the process I followed was to make the defaults a little less default. If you have suggestions, let me know!
 
 ---
 
