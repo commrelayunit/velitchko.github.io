@@ -228,7 +228,7 @@ For EU-based requests (yes, we have the GDPR), this is the practical flow I woul
 5. **Update your table with a status.** Record the date, addresses contacted, ticket number, response, and any retention explanation.
 6. **Track the deadline and escalate deliberately.** Article 12 generally requires a response within one month; a controller can extend this by up to two further months for complex requests, but **should tell you within the first month and explain why**.<sup>[15](#note-15)</sup> If support loops, ask for the privacy team or DPO. If the response remains inadequate, the relevant supervisory authority is the next step.
 
-The GDPR itself was rarely the difficult part for me. The organisational machinery around it was. Some companies deleted everything within hours. Others took weeks to acknowledge a request, sent me back to broken forms, or required access to an account whose login system no longer worked.
+The GDPR itself was rarely the difficult part for me. The organizational and bureaucratic processes around it are major pain points. Some companies deleted everything within hours. Others took weeks to acknowledge a request, sent me back to broken forms, or required access to an account whose login system no longer worked.
 
 This is not proof that every retained record is non-compliance. Some data has to be kept for legal, tax, fraud, or contractual reasons. In those cases, I want a clear explanation of **what** remains, **why**, and **for how long**.
 
