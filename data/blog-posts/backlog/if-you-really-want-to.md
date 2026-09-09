@@ -230,7 +230,7 @@ For EU-based requests (yes, we have the GDPR), this is the practical flow I woul
 
 The GDPR itself was rarely the difficult part for me. The organizational and bureaucratic processes around it are major pain points. Some companies deleted everything within hours. Others took weeks to acknowledge a request, sent me back to broken forms, or required access to an account whose login system no longer worked.
 
-This is not proof that every retained record is non-compliance. Some data has to be kept for legal, tax, fraud, or contractual reasons. In those cases, I want a clear explanation of **what** remains, **why**, and **for how long**.
+It is important to realize that some data has to be kept for legal, tax, fraud, or contractual reasons and when making a request you can ask for the **exact** reasons that certain data needs to be kept on file. You have the right to I ask for clear explanation of **what** remains, **why**, and **for how long**. I can also recommend to use LLMs here. They are great to tackle the annoying part of drafting formal emails, requesting deletion, and referring to parts of the privacy policy and GDPR that apply. Very useful for drafting a concise follow-up, translating a request, or summarizing a long support thread.
 
 I also use LLMs here, but only for the administrative drudgery: drafting a concise follow-up, translating a request, or summarising a long support thread. I still decide what to ask for and read every message before it goes out.
 
