@@ -11,7 +11,7 @@ The site is built with Next.js and TypeScript, exported as static files, and dep
 - A BibTeX source of truth in `data/publications.bib`, plus generated data in `data/publications-generated.ts`.
 - The co-author network at `/coauthors`, built with `d3-force`.
 - Markdown posts in `data/blog-posts/`, served under `/blog`.
-- Portfolio case studies in `data/portfolio.ts`, served under `/portfolio`.
+- Markdown-backed portfolio case studies in `data/portfolio-projects/`, served under `/portfolio`.
 - Static assets, including the CV, in `public/`.
 
 ## Local development
@@ -90,8 +90,15 @@ This repository is the live website source, not a generic portfolio template.
 
 ## Portfolio case studies
 
-`data/portfolio.ts` is the single source of truth for the interactive portfolio and browser-printable brochure. Each entry needs a `slug`, `title`, `blurb`, `tags`, one or more typed `links`, and `order`. Optional fields are `date`, `abstract`, `role`, `collaborators`, `outcomes`, `status`, `featured`, and `media`.
+Each Markdown file in `data/portfolio-projects/` is one case study and is the single source of truth for the interactive portfolio and browser-printable brochure. Start a new project by copying the blank template:
 
-Put images and GIFs under `public/portfolio/`, then add them to an entry as `{ src: "/portfolio/example.gif", alt: "A concise description", caption: "Optional caption", type: "gif" }`. Do not use external image hosts. Entries with no media render an intentional, non-deceptive placeholder until local assets are available.
+```bash
+cp data/portfolio-projects/.template/project-template.md \\
+  data/portfolio-projects/my-project.md
+```
+
+Use the filename as the stable project URL anchor (for example, `my-project.md` becomes `#my-project`). Required front matter is `title`, `blurb`, one or more `links`, and numeric `order`. `tags` is strongly recommended. Optional fields are `date`, `abstract`, `role`, `collaborators`, `outcomes`, `status`, `featured`, and `media`. The Markdown body is for the fuller case-study prose; headings, lists, links, emphasis, and tables are supported. Raw HTML is intentionally not rendered.
+
+Put images and GIFs under `public/portfolio/`, then add them to front matter as `media` items with `src`, `alt`, optional `caption`, and `type` (`image` or `gif`). Do not use external image hosts. Entries with no media render an intentional, non-deceptive placeholder until local assets are available.
 
 The Portfolio navigation item leads to `/portfolio`; its sticky project list supports jumping through long case studies. Select **Print / save as PDF** (or use the browser print command) to produce the built-in brochure layout: cover, case studies, and a closing contact page. The print stylesheet removes navigation and controls and keeps each case study together where the browser permits it.
