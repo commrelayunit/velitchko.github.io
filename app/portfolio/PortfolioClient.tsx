@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { PortfolioProject } from "@/data/portfolio";
 
 function ProjectMedia({ project }: { project: PortfolioProject }) {
@@ -30,11 +30,48 @@ function ProjectMedia({ project }: { project: PortfolioProject }) {
 
 export default function PortfolioClient({ projects }: { projects: PortfolioProject[] }) {
   const [activeProject, setActiveProject] = useState(projects[0]?.slug);
+  const [isNavigatorOpen, setIsNavigatorOpen] = useState(false);
+  const navigatorTriggerRef = useRef<HTMLButtonElement>(null);
+  const navigatorCloseRef = useRef<HTMLButtonElement>(null);
 
   const jumpTo = (slug: string) => {
     setActiveProject(slug);
+    setIsNavigatorOpen(false);
     document.getElementById(slug)?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
+
+  useEffect(() => {
+    if (!isNavigatorOpen) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setIsNavigatorOpen(false);
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+    const previousOverflow = document.body.style.overflow;
+    const trigger = navigatorTriggerRef.current;
+    document.body.style.overflow = "hidden";
+    navigatorCloseRef.current?.focus();
+
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = previousOverflow;
+      trigger?.focus();
+    };
+  }, [isNavigatorOpen]);
+
+  const ProjectDetails = ({ project }: { project: PortfolioProject }) => (
+    <>
+      <section>
+        <h3>Project note</h3>
+        {project.abstract ? <p>{project.abstract}</p> : <p>Case-study abstract to be added. This seed entry is intentionally limited to verified project copy already present on this website.</p>}
+      </section>
+      {project.contentHtml && <section className="portfolio-markdown" dangerouslySetInnerHTML={{ __html: project.contentHtml }} />}
+      {project.role && <section><h3>Contribution</h3><p>{project.role}</p></section>}
+      {project.collaborators?.length && <section><h3>Collaborators</h3><p>{project.collaborators.join(", ")}</p></section>}
+      {project.outcomes?.length && <section><h3>Outcomes</h3><ul>{project.outcomes.map((outcome) => <li key={outcome}>{outcome}</li>)}</ul></section>}
+    </>
+  );
 
   return (
     <div className="portfolio-page">
@@ -50,22 +87,40 @@ export default function PortfolioClient({ projects }: { projects: PortfolioProje
       </section>
 
       <div className="portfolio-shell">
-        <aside className="portfolio-quick-nav no-print" aria-label="Portfolio projects">
-          <div>
-            <p className="portfolio-nav-label">Quick navigation</p>
-            <ol>
-              {projects.map((project, index) => (
-                <li key={project.slug}>
-                  <button className={activeProject === project.slug ? "is-active" : ""} type="button" onClick={() => jumpTo(project.slug)} aria-current={activeProject === project.slug ? "location" : undefined}>
-                    <span>{String(index + 1).padStart(2, "0")}</span>{project.title}
-                  </button>
-                </li>
-              ))}
-            </ol>
-          </div>
-          <button className="portfolio-print-button" type="button" onClick={() => window.print()}>Print portfolio</button>
-        </aside>
-
+        <div className="portfolio-navigator no-print">
+          <button
+            ref={navigatorTriggerRef}
+            className="portfolio-navigator-trigger"
+            type="button"
+            aria-haspopup="dialog"
+            aria-expanded={isNavigatorOpen}
+            aria-controls="portfolio-project-navigator"
+            onClick={() => setIsNavigatorOpen(true)}
+          >
+            <span aria-hidden="true">☰</span> Projects
+          </button>
+          {isNavigatorOpen && (
+            <div className="portfolio-navigator-layer" role="presentation">
+              <button className="portfolio-navigator-backdrop" type="button" aria-label="Close project navigation" onClick={() => setIsNavigatorOpen(false)} />
+              <aside id="portfolio-project-navigator" className="portfolio-quick-nav" role="dialog" aria-modal="true" aria-label="Portfolio projects">
+                <div className="portfolio-nav-heading">
+                  <p className="portfolio-nav-label">Quick navigation</p>
+                  <button ref={navigatorCloseRef} className="portfolio-navigator-close" type="button" onClick={() => setIsNavigatorOpen(false)}>Close <span aria-hidden="true">×</span></button>
+                </div>
+                <ol>
+                  {projects.map((project, index) => (
+                    <li key={project.slug}>
+                      <button className={activeProject === project.slug ? "is-active" : ""} type="button" onClick={() => jumpTo(project.slug)} aria-current={activeProject === project.slug ? "location" : undefined}>
+                        <span>{String(index + 1).padStart(2, "0")}</span>{project.title}
+                      </button>
+                    </li>
+                  ))}
+                </ol>
+                <button className="portfolio-print-button" type="button" onClick={() => window.print()}>Print portfolio</button>
+              </aside>
+            </div>
+          )}
+        </div>
         <main id="case-studies" className="portfolio-case-studies" aria-label="Portfolio case studies">
           {projects.map((project, index) => (
             <article className="portfolio-case-study print-page" id={project.slug} key={project.slug} tabIndex={-1}>
@@ -77,16 +132,11 @@ export default function PortfolioClient({ projects }: { projects: PortfolioProje
                   <p className="portfolio-blurb">{project.blurb}</p>
                 </header>
                 <ProjectMedia project={project} />
-                <div className="portfolio-details">
-                  <section>
-                    <h3>Project note</h3>
-                    {project.abstract ? <p>{project.abstract}</p> : <p>Case-study abstract to be added. This seed entry is intentionally limited to verified project copy already present on this website.</p>}
-                  </section>
-                  {project.contentHtml && <section className="portfolio-markdown" dangerouslySetInnerHTML={{ __html: project.contentHtml }} />}
-                  {project.role && <section><h3>Contribution</h3><p>{project.role}</p></section>}
-                  {project.collaborators?.length && <section><h3>Collaborators</h3><p>{project.collaborators.join(", ")}</p></section>}
-                  {project.outcomes?.length && <section><h3>Outcomes</h3><ul>{project.outcomes.map((outcome) => <li key={outcome}>{outcome}</li>)}</ul></section>}
-                </div>
+                <div className="portfolio-details portfolio-details-desktop"><ProjectDetails project={project} /></div>
+                <details className="portfolio-details-mobile">
+                  <summary>Read project details</summary>
+                  <div className="portfolio-details"><ProjectDetails project={project} /></div>
+                </details>
                 <footer className="portfolio-case-footer">
                   <div className="portfolio-tags" aria-label="Project tags">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
                   <div className="portfolio-links">{project.links.map((link) => <a key={link.url} href={link.url} target="_blank" rel="noreferrer">{link.label} <span aria-hidden="true">↗</span><span className="print-url"> · {link.url}</span></a>)}</div>
