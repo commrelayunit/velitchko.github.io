@@ -70,6 +70,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/portfolio" className="text-neon-cyan/80 hover:text-neon-pink hover:neon-glow transition-colors">
+                  → Portfolio
+                </Link>
+              </li>
+              <li>
                 <Link href="/#publications" className="text-neon-cyan/80 hover:text-neon-pink hover:neon-glow transition-colors">
                   → Publications
                 </Link>

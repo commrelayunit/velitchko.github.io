@@ -11,6 +11,7 @@ The site is built with Next.js and TypeScript, exported as static files, and dep
 - A BibTeX source of truth in `data/publications.bib`, plus generated data in `data/publications-generated.ts`.
 - The co-author network at `/coauthors`, built with `d3-force`.
 - Markdown posts in `data/blog-posts/`, served under `/blog`.
+- Portfolio case studies in `data/portfolio.ts`, served under `/portfolio`.
 - Static assets, including the CV, in `public/`.
 
 ## Local development
@@ -86,3 +87,11 @@ Posts support GitHub-flavoured Markdown, code highlighting, and math. Drafts or 
 - Do not commit credentials, local configuration, or generated dependency directories.
 
 This repository is the live website source, not a generic portfolio template.
+
+## Portfolio case studies
+
+`data/portfolio.ts` is the single source of truth for the interactive portfolio and browser-printable brochure. Each entry needs a `slug`, `title`, `blurb`, `tags`, one or more typed `links`, and `order`. Optional fields are `date`, `abstract`, `role`, `collaborators`, `outcomes`, `status`, `featured`, and `media`.
+
+Put images and GIFs under `public/portfolio/`, then add them to an entry as `{ src: "/portfolio/example.gif", alt: "A concise description", caption: "Optional caption", type: "gif" }`. Do not use external image hosts. Entries with no media render an intentional, non-deceptive placeholder until local assets are available.
+
+The Portfolio navigation item leads to `/portfolio`; its sticky project list supports jumping through long case studies. Select **Print / save as PDF** (or use the browser print command) to produce the built-in brochure layout: cover, case studies, and a closing contact page. The print stylesheet removes navigation and controls and keeps each case study together where the browser permits it.

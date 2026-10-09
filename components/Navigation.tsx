@@ -16,6 +16,7 @@ export default function Navigation() {
     { id: 'projects',   label: '[projects]',   proLabel: 'Projects',   href: '/#projects' },
     { id: 'publications', label: '[publications]', proLabel: 'Publications', href: '/#publications' },
     { id: 'blog',        label: '[blog]',        proLabel: 'Writing',     href: '/blog' },
+    { id: 'portfolio',   label: '[portfolio]',   proLabel: 'Portfolio',   href: '/portfolio' },
     { id: 'contact',    label: '[contact]',    proLabel: 'Contact',    href: '/#contact' },
   ];
 
@@ -36,7 +37,7 @@ export default function Navigation() {
 
   const handleNavClick = (item: typeof navItems[0], e: React.MouseEvent) => {
     // If we're on homepage and it's not blog, do smooth scroll
-    if (isHomePage && item.id !== 'blog') {
+    if (isHomePage && !['blog', 'portfolio'].includes(item.id)) {
       e.preventDefault();
       scrollToSection(item.id);
     }
