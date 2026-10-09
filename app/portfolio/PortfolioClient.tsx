@@ -95,9 +95,11 @@ export default function PortfolioClient({ projects }: { projects: PortfolioProje
             aria-haspopup="dialog"
             aria-expanded={isNavigatorOpen}
             aria-controls="portfolio-project-navigator"
+            aria-label="Open project navigation"
+            title="Open project navigation"
             onClick={() => setIsNavigatorOpen(true)}
           >
-            <span aria-hidden="true">☰</span> Projects
+            <span className="portfolio-navigator-chevron" aria-hidden="true">›</span>
           </button>
           {isNavigatorOpen && (
             <div className="portfolio-navigator-layer" role="presentation">
